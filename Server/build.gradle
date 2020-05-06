@@ -1,0 +1,5 @@
+dependencies {
+    implementation project(':Domain')
+    implementation project(':Persistence')
+    implementation project(':Service')
+}

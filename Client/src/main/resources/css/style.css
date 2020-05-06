@@ -1,0 +1,290 @@
+* {
+    -fx-primary: #2A2E37;
+    -fx-secondary: #FFD85E;
+    -fx-tertiary: #43a047;
+    -fx-add: #5e35b1;
+    -fx-search: #29b6f6;
+    -fx-primarytext: #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+}
+
+.root {
+    -fx-background-color: -fx-primary;
+}
+
+.glyph-icon {
+    -fx-fill: -fx-primarytext;
+}
+
+/*Default*/
+
+.button {
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 12pt;
+    -fx-border-width: 2px;
+}
+
+.button:hover {
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+}
+
+.text-field, .jfx-text-area {
+    -fx-font-size: 11pt;
+    -fx-text-fill: derive(-fx-secondary, 20%);
+    -jfx-unfocus-color: derive(-fx-primarytext, 20%);
+    -fx-prompt-text-fill: derive(-fx-primarytext, 20%);
+    -jfx-focus-color: -fx-secondary;
+    /*-fx-font-weight: 800;*/
+}
+
+.jfx-text-area{
+    -fx-prompt-text-fill: derive(-fx-primarytext, -40%);
+}
+
+#taskGrid {
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size: 16pt;
+}
+
+.text-field.add {
+    -jfx-focus-color: -fx-add;
+    -fx-text-fill: derive(-fx-add, 20%);
+}
+
+.add > .text-field {
+    -fx-text-fill: -fx-add;
+}
+
+/*login screen*/
+#login > .text-field > .input-line {
+    -fx-pref-height: 1.5;
+    -fx-background-radius: 10px;
+}
+
+#login > .text-field > .input-focused-line {
+    -fx-pref-height: 3;
+    -fx-background-radius: 20px;
+}
+
+#login > .button.login, #login > .text-field.login {
+    -fx-font-size: 13pt;
+}
+
+#login > .button:hover, #login > .button:focused {
+    -fx-text-fill: -fx-primary;
+    -fx-background-color: -fx-secondary;
+    -fx-border-color: -fx-secondary;
+}
+
+#login > .wrong-credentials {
+    -jfx-unfocus-color: #ef5350;
+    -fx-prompt-text-fill: #ef5350;
+}
+
+/*com.jderu.app-window*/
+
+.jfx-date-picker > .jfx-text-field {
+    -jfx-label-float: true;
+}
+
+.jfx-time-picker > .jfx-text-field {
+    -jfx-label-float: true;
+}
+
+#saveTask {
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 3px 10px 3px 10px;
+}
+
+.button.sendTask {
+    -fx-padding: 0px 5px 0px 5px;
+    -fx-border-radius: 14px;
+    -fx-background-radius: 14px;
+}
+
+.button.add {
+    -fx-border-color: -fx-add;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 2px;
+}
+
+.button:hover.sendTask {
+    -fx-background-color: -fx-secondary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 7px;
+    -fx-background-radius: 7px;
+}
+
+.button:hover.add, .button:focused.add {
+    -fx-background-color: -fx-add;
+    -fx-border-color: -fx-add;
+}
+
+.table-view {
+    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-font-size: 11pt;
+    -fx-border-color: derive(-fx-secondary, -60%);
+}
+
+.table-view:focused {
+    -fx-background-color: derive(-fx-primary, -20%);
+}
+
+.table-view .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-primarytext;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: -fx-primarytext;
+}
+
+.table-cell .text-field {
+    -fx-background-color: derive(-fx-secondary, 20%);
+    -fx-text-fill: -fx-primary;
+    -fx-alignment: center;
+}
+
+.table-row-cell:focused, .table-cell:focused {
+    -fx-text-fill: -fx-primary;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-primary;
+    -fx-table-cell-border-color: transparent;
+    -fx-min-height: 44px;
+}
+
+.table-view .column-header {
+    -fx-background-color: derive(-fx-tertiary, -20%);
+    -fx-font-size: 13pt;
+}
+
+.table-text-cell{
+    -fx-text-fill: -fx-primary-text;
+}
+
+/*.table-column {*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
+
+.table-row-cell:even {
+    -fx-background-color: derive(-fx-primary, 10%);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: derive(-fx-secondary, 10%);
+    -fx-text-fill: -fx-primary;
+    -fx-background-insets: 0;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: -fx-primary;
+}
+
+.table-view .scroll-bar * {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+.table-view .filler {
+    -fx-background-color: -fx-primary;
+}
+
+.table-context {
+    -fx-base: -fx-primary;
+}
+
+/*spinner*/
+
+.spinner {
+    -fx-background-color: -fx-primarytext;
+    -fx-background-insets: 1;
+    -fx-text-alignment: center;
+}
+
+.spinner > .text-field {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-secondary;
+    -fx-background-insets: 0;
+    -fx-text-alignment: center;
+}
+
+.spinner.add > .text-field {
+    -fx-text-fill: -fx-add;
+}
+
+.spinner .increment-arrow-button {
+    -fx-body-color: -fx-primary;
+    -fx-background-insets: 0 0 -1 0;
+}
+
+.spinner .decrement-arrow-button {
+    -fx-body-color: -fx-primary;
+    -fx-background-insets: -1 0 -1 0;
+}
+
+.split-arrows-horizontal .increment-arrow-button,
+.split-arrows-horizontal .decrement-arrow-button {
+    -fx-background-insets: 0;
+}
+
+.spinner .increment-arrow-button:hover > .increment-arrow,
+.spinner .decrement-arrow-button:hover > .decrement-arrow {
+    -fx-background-color: -fx-secondary;
+    -fx-background-insets: 0;
+}
+
+.spinner .increment-arrow-button:pressed > .increment-arrow,
+.spinner .decrement-arrow-button:pressed > .decrement-arrow {
+    -fx-background-color: -fx-tertiary;
+    -fx-background-insets: 0;
+}
+
+.alwaysFocused {
+    -fx-opacity: 1;
+}
+
+/*JFXDialog styling*/
+.jfx-layout-heading {
+    -fx-background-color: derive(-fx-tertiary, -20%);
+    -fx-alignment: Center;
+    -fx-padding: 10 20 10 20;
+}
+
+.errorHeading .jfx-layout-heading {
+    -fx-background-color: derive(-fx-red, -40%);
+}
+
+.jfx-layout-heading .label {
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size: 18pt;
+}
+
+.jfx-layout-body, .jfx-layout-actions {
+    -fx-background-color: -fx-primary;
+    -fx-alignment: Center;
+}
+
+.jfx-layout-actions .button {
+    -fx-padding: 0 10 0 10;
+    -fx-font-size: 14pt;
+}
+
+.jfx-layout-body .label {
+    -fx-text-fill: -fx-primarytext;
+    -fx-padding: 20px 0 0 0;
+    -fx-font-size: 14pt;
+}
