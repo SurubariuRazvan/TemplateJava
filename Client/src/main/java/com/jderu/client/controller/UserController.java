@@ -1,6 +1,8 @@
 package com.jderu.client.controller;
 
 import com.jderu.domain.Employee;
+import com.jderu.domain.Manager;
+import com.jderu.domain.Task;
 import com.jderu.domain.User;
 import com.jderu.service.AppServiceException;
 import com.jderu.service.IAppServices;
@@ -18,6 +20,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ResourceBundle;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
@@ -58,10 +63,10 @@ public abstract class UserController<U extends User> implements Initializable, I
         });
     }
 
-    protected void addButtonToTable(TableColumn<Employee, Void> tc, String styleClass, Supplier<Node> graphic, BiConsumer<Integer, Employee> onAction) {
+    protected <EE> void addButtonToTable(TableColumn<EE, Void> tc, String styleClass, Supplier<Node> graphic, BiConsumer<Integer, EE> onAction) {
         tc.setCellFactory(new Callback<>() {
             @Override
-            public TableCell<Employee, Void> call(final TableColumn<Employee, Void> param) {
+            public TableCell<EE, Void> call(final TableColumn<EE, Void> param) {
                 return new TableCell<>() {
                     private final JFXButton btn = new JFXButton(" ");
 
@@ -71,7 +76,7 @@ public abstract class UserController<U extends User> implements Initializable, I
                         btn.setButtonType(JFXButton.ButtonType.RAISED);
                         btn.setContentDisplay(ContentDisplay.CENTER);
                         btn.setOnAction((ActionEvent event) -> {
-                            Employee entity = getTableView().getItems().get(getIndex());
+                            EE entity = getTableView().getItems().get(getIndex());
                             try {
                                 onAction.accept(getIndex(), entity);
                             } catch (Exception e) {
@@ -109,5 +114,21 @@ public abstract class UserController<U extends User> implements Initializable, I
         } catch (AppServiceException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void updateWindows(Task task) {
+    }
+
+    @Override
+    public void employeeLoggedIn(Employee employee) {
+    }
+
+    @Override
+    public void employeeLoggedOut(Employee employee) {
+    }
+
+    @Override
+    public void updateAdministratorWindow(Employee employee, Manager manager, Boolean isDelete) {
     }
 }

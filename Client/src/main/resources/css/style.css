@@ -116,6 +116,23 @@
     -fx-padding: 2px;
 }
 
+.button:hover.add, .button:focused.add {
+    -fx-background-color: -fx-add;
+    -fx-border-color: -fx-add;
+}
+
+.button.update {
+    -fx-border-color: -fx-search;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 2px;
+}
+
+.button:hover.update, .button:focused.update {
+    -fx-background-color: -fx-search;
+    -fx-border-color: -fx-search;
+}
+
 .button:hover.sendTask {
     -fx-background-color: -fx-secondary;
     -fx-border-color: -fx-secondary;
@@ -123,9 +140,17 @@
     -fx-background-radius: 7px;
 }
 
-.button:hover.add, .button:focused.add {
-    -fx-background-color: -fx-add;
-    -fx-border-color: -fx-add;
+.button:hover.sendTask {
+    -fx-background-color: -fx-secondary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 7px;
+    -fx-background-radius: 7px;
+}
+
+.deleteButton {
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 2px;
 }
 
 .table-view {

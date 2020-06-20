@@ -2,7 +2,6 @@ package com.jderu.client.controller;
 
 import com.jderu.domain.Employee;
 import com.jderu.domain.Manager;
-import com.jderu.domain.Task;
 import com.jderu.service.AppServiceException;
 import com.jfoenix.controls.JFXTextArea;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
@@ -13,9 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.net.URL;
-import java.rmi.RemoteException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
@@ -46,15 +43,11 @@ public class ManagerController extends UserController<Manager> {
 
     protected void postInitialization() {
         try {
-            entities = FXCollections.observableList(appService.findAllEmployees());
+            entities = FXCollections.observableList(appService.findAllWorkingEmployees());
         } catch (AppServiceException e) {
             e.printStackTrace();
         }
         employeeTable.setItems(entities);
-    }
-
-    @Override
-    public void updateWindows(Task task) {
     }
 
     @Override

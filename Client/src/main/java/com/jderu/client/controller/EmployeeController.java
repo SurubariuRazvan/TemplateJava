@@ -8,9 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
-
 import java.net.URL;
-import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 public class EmployeeController extends UserController<Employee> {
@@ -22,17 +20,17 @@ public class EmployeeController extends UserController<Employee> {
     public void initialize(URL location, ResourceBundle resources) {
         taskDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
 
-        taskDescription.setCellFactory(tc -> {
-            TableCell<Task, String> cell = new TableCell<>();
-            Text text = new Text();
-            text.getStyleClass().add("table-text-cell");
-            cell.getStyleClass().add("table-text-cell");
-            cell.setGraphic(text);
-            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
-            text.wrappingWidthProperty().bind(taskDescription.widthProperty());
-            text.textProperty().bind(cell.itemProperty());
-            return cell;
-        });
+//        taskDescription.setCellFactory(tc -> {
+//            TableCell<Task, String> cell = new TableCell<>();
+//            Text text = new Text();
+//            text.getStyleClass().add("table-text-cell");
+//            cell.getStyleClass().add("table-text-cell");
+//            cell.setGraphic(text);
+//            cell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+//            text.wrappingWidthProperty().bind(taskDescription.widthProperty());
+//            text.textProperty().bind(cell.itemProperty());
+//            return cell;
+//        });
     }
 
     protected void postInitialization() {
@@ -48,13 +46,5 @@ public class EmployeeController extends UserController<Employee> {
     @Override
     public void updateWindows(Task task) {
         taskTable.getItems().add(task);
-    }
-
-    @Override
-    public void employeeLoggedIn(Employee employee) {
-    }
-
-    @Override
-    public void employeeLoggedOut(Employee employee) {
     }
 }

@@ -13,11 +13,6 @@ dependencies {
     compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
     compile 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9.1.2'
     compile 'de.jensd:fontawesomefx-materialicons:2.2.0-9.1.2'
-
-    compile 'org.springframework:spring-core:5.2.6.RELEASE'
-    compile 'org.springframework:spring-context:5.2.6.RELEASE'
-    compile 'org.springframework:spring-beans:5.2.6.RELEASE'
-    compile 'org.springframework:spring-jdbc:5.2.6.RELEASE'
 }
 
 javafx {

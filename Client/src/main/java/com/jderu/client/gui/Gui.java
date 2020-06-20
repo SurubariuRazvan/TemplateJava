@@ -29,7 +29,6 @@ public class Gui extends Application {
         loginController.setService(server);
         loginController.setPrimaryStage(primaryStage);
 
-        primaryStage.setOnCloseRequest(we -> loginController.close());
         primaryStage.setMinWidth(650);
         primaryStage.setMinHeight(450);
 

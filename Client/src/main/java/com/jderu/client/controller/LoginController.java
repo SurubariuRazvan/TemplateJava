@@ -1,6 +1,7 @@
 package com.jderu.client.controller;
 
 import com.jderu.domain.Employee;
+import com.jderu.domain.Manager;
 import com.jderu.domain.Task;
 import com.jderu.domain.User;
 import com.jderu.service.AppServiceException;
@@ -110,7 +111,9 @@ public class LoginController extends UnicastRemoteObject implements Initializabl
         }
     }
 
-    public void close() {
+    @Override
+    public void updateAdministratorWindow(Employee employee, Manager manager, Boolean isDelete) throws RemoteException {
+        appController.updateAdministratorWindow(employee, manager, isDelete);
     }
 
     @Override

@@ -25,11 +25,13 @@ public class UserDatabaseRepository extends AbstractJPARepository<User, Integer>
 
     @Override
     public User findByUsernameAndPassword(String username, String password) {
+        logger.info(entityType.getName() + ": find by username: " + username + " and password: " + password);
         return repo.findByUsernameAndPassword(username, User.encodePassword(password));
     }
 
     @Override
     public List<User> findAllByUserType(UserType userType) {
+        logger.info(entityType.getName() + ": find by user type: " + userType);
         return repo.findAllByUserType(userType);
     }
 }

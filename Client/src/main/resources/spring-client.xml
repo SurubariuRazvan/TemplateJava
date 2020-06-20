@@ -3,7 +3,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="appService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://192.168.56.1:1199/App"/>
+        <property name="serviceUrl" value="rmi://192.168.0.117:1199/App"/>
         <property name="serviceInterface" value="com.jderu.service.IAppServices"/>
     </bean>
 

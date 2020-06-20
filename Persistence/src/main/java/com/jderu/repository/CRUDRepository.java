@@ -11,13 +11,9 @@ public interface CRUDRepository<E extends Entity<ID>, ID extends Serializable> {
 
     Iterable<E> findAll();
 
-    /**
-     * entity with id null is save, other are update
-     *
-     * @param entity with id
-     * @return old entity if it updated or null if it saved
-     */
     E save(E entity);
+
+    E update(E entity);
 
     /**
      * @param id of an entity

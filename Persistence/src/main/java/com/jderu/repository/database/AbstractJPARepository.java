@@ -27,7 +27,7 @@ public abstract class AbstractJPARepository<E extends Entity<ID>, ID extends Ser
     public E findByID(ID id) {
         if (id == null)
             throw new IllegalArgumentException("id is null");
-        logger.info("Find by id " + entityType.getName() + " " + id);
+        logger.info("Find " + entityType.getName() + " by id: " + id);
         return repo.findById(id).orElse(null);
     }
 
@@ -41,23 +41,30 @@ public abstract class AbstractJPARepository<E extends Entity<ID>, ID extends Ser
     public E save(E entity) throws ValidationException {
         if (entity == null)
             throw new IllegalArgumentException("entity is null");
-        logger.info("Save " + entityType.getName() + " " + entity.getId());
+        logger.info("Save " + entityType.getName() + " with id: " + entity.getId());
         validator.validate(entity);
 
-        if (entity.getId() == null) {
-            repo.save(entity);
+        entity.setId(null);
+        return repo.save(entity);
+    }
+
+    @Override
+    public E update(E entity) throws ValidationException {
+        if (entity == null)
+            throw new IllegalArgumentException("entity is null");
+        logger.info("Update " + entityType.getName() + " with id: " + entity.getId());
+        validator.validate(entity);
+
+        if (entity.getId() == null)
             return null;
-        } else {
-            repo.save(entity);
-            return entity;
-        }
+        return repo.save(entity);
     }
 
     @Override
     public E delete(ID id) {
         if (id == null)
             throw new IllegalArgumentException("id is null");
-        logger.info("Delete " + entityType.getName() + " " + id);
+        logger.info("Delete " + entityType.getName() + " with id: " + id);
         E entity = this.findByID(id);
         if (entity != null)
             repo.deleteById(id);

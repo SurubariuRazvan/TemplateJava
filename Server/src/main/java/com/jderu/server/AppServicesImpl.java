@@ -28,21 +28,19 @@ public class AppServicesImpl implements IAppServices {
     public AppServicesImpl(UserRepository userRepository) {
         this.userRepo = userRepository;
         this.loggedUsers = new ConcurrentHashMap<>();
-
-        try {
-            userRepo.save(new Administrator(null, "ion1", "a", "Ionel1", "e admin1"));
-            userRepo.save(new Manager(null, "ion2", "a", "Ionel2", "e manager1"));
-            userRepo.save(new Employee(null, "ion3", "a", "X Æ A-12"));
-            userRepo.save(new Employee(null, "ion4", "a", "\\\\null"));
-            userRepo.save(new Employee(null, "ion5", "a", "\\\\0"));
-        } catch (Exception ex) {
-            System.out.println("crapa");
-        }
-        Employee employee = (Employee) userRepo.findByUsernameAndPassword("ion3", "a");
-        employee.addTask(new Task(1, "Task1"));
-        userRepository.save(employee);
+        addData();
     }
 
+    private void addData() {
+        userRepo.save(new Administrator(null, "ion1", "a", "Ionel1"));
+        userRepo.save(new Manager(null, "ion2", "a", "Ionel2"));
+        userRepo.save(new Employee(null, "ion3", "a", "X Æ A-12"));
+        userRepo.save(new Employee(null, "ion4", "a", "\\\\null"));
+        userRepo.save(new Employee(null, "ion5", "a", "\\\\0"));
+        Employee employee = (Employee) userRepo.findByUsernameAndPassword("ion3", "a");
+        employee.addTask(new Task(1, "Task1"));
+        userRepo.update(employee);
+    }
 
     @Override
     public synchronized User login(String username, String password, IAppObserver client) throws AppServiceException {
@@ -56,7 +54,7 @@ public class AppServicesImpl implements IAppServices {
             Employee employee = (Employee) user;
             employee.setLastClockInTime(new Timestamp(System.currentTimeMillis()));
             employee.setEmployeeState(EmployeeState.ATWORK);
-            userRepo.save(employee);
+            userRepo.update(employee);
             notifyManagerEmployeeLoggedIn(employee);
         }
         return user;
@@ -69,7 +67,7 @@ public class AppServicesImpl implements IAppServices {
             if (loggedUser.getUserType().equals(UserType.Employee)) {
                 Employee employee = (Employee) userRepo.findByID(userID);
                 employee.setEmployeeState(EmployeeState.ATHOME);
-                userRepo.save(employee);
+                userRepo.update(employee);
                 notifyManagerEmployeeLoggedOut(employee);
             }
             loggedUsers.remove(userID);
@@ -81,7 +79,7 @@ public class AppServicesImpl implements IAppServices {
     public synchronized void sendTask(Employee employee, String taskDescription) {
         Task task = new Task(null, taskDescription);
         employee.addTask(task);
-        userRepo.save(employee);
+        userRepo.update(employee);
 
         ExecutorService executor = Executors.newFixedThreadPool(defaultThreadsNo);
         if (loggedUsers.get(employee.getId()) != null)
@@ -96,8 +94,41 @@ public class AppServicesImpl implements IAppServices {
     }
 
     @Override
+    public void addUser(User user) {
+        notifyAdministrator(userRepo.save(user), false);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        notifyAdministrator(userRepo.update(user), false);
+    }
+
+    @Override
+    public void deleteUser(Integer userId) {
+        notifyAdministrator(userRepo.delete(userId), true);
+    }
+
+    @Override
     public List<Task> findAllTasksForEmployee(Employee employee) {
         return employee.getTasks();
+    }
+
+    private void notifyAdministrator(User user, Boolean isDelete) {
+        ExecutorService executor = Executors.newFixedThreadPool(defaultThreadsNo);
+        for (LoggedUser appObserver : loggedUsers.values())
+            if (appObserver != null && appObserver.getUserType().equals(UserType.Administrator))
+                executor.execute(() -> {
+                    try {
+                        System.out.println("notifyAdministrator");
+                        if (user.getUserType().equals(UserType.Employee))
+                            appObserver.getObserver().updateAdministratorWindow((Employee) user, null, isDelete);
+                        else
+                            appObserver.getObserver().updateAdministratorWindow(null, (Manager) user, isDelete);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                });
+        executor.shutdown();
     }
 
     private void notifyManagerEmployeeLoggedIn(Employee employee) {
@@ -129,11 +160,27 @@ public class AppServicesImpl implements IAppServices {
     }
 
     @Override
-    public synchronized List<Employee> findAllEmployees() {
+    public synchronized List<Employee> findAllWorkingEmployees() {
         List<Employee> employees = new ArrayList<>();
         for (var employee : userRepo.findAllByUserType(UserType.Employee))
             if (((Employee) employee).getEmployeeState().equals(EmployeeState.ATWORK))
                 employees.add((Employee) employee);
         return employees;
+    }
+
+    @Override
+    public List<Employee> findAllEmployees() {
+        List<Employee> employees = new ArrayList<>();
+        for (var employee : userRepo.findAllByUserType(UserType.Employee))
+            employees.add((Employee) employee);
+        return employees;
+    }
+
+    @Override
+    public List<Manager> findAllManagers() {
+        List<Manager> managers = new ArrayList<>();
+        for (var manager : userRepo.findAllByUserType(UserType.Manager))
+            managers.add((Manager) manager);
+        return managers;
     }
 }
