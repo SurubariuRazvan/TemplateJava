@@ -10,7 +10,7 @@ allprojects {
     apply plugin: 'io.spring.dependency-management'
 
     version '1.0-SNAPSHOT'
-    group 'com.exam'
+    group 'com.jderu'
     sourceCompatibility = 1.11
 
     bootJar {
