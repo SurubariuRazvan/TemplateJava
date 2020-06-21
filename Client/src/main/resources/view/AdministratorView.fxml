@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import de.jensd.fx.glyphs.materialicons.MaterialIconView?>
 <?import javafx.geometry.Insets?>
@@ -14,14 +16,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<StackPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.exam.client.controller.AdministratorController">
+<?import com.jfoenix.controls.JFXTabPane?>
+<StackPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jderu.client.controller.AdministratorController">
     <BorderPane fx:id="menuPane" prefHeight="200.0" prefWidth="200.0">
         <center>
-            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
-                     BorderPane.alignment="CENTER">
+            <JFXTabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
+                        BorderPane.alignment="CENTER">
                 <Tab text="Employees">
                     <GridPane hgap="8.0" vgap="16.0">
                         <columnConstraints>
@@ -61,46 +61,46 @@
                                 <Font size="16.0"/>
                             </font>
                         </Label>
-                        <TextField fx:id="employeeUpdateUsername" promptText="Username"
+                        <JFXTextField fx:id="employeeUpdateUsername" labelFloat="true" promptText="Username"
                                       GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-                        <TextField fx:id="employeeUpdatePassword" promptText="Password"
+                        <JFXTextField fx:id="employeeUpdatePassword" labelFloat="true" promptText="Password"
                                       GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-                        <TextField fx:id="employeeUpdateName" promptText="Name"
-                                   GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
-                                onAction="#updateEmployeeUsername" styleClass="update" text=" "
-                                GridPane.columnIndex="4" GridPane.rowIndex="1">
+                        <JFXTextField fx:id="employeeUpdateName" labelFloat="true" promptText="Name"
+                                      GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
+                                   onAction="#updateEmployeeUsername" styleClass="update" text=" "
+                                   GridPane.columnIndex="4" GridPane.rowIndex="1">
                             <graphic>
                                 <MaterialDesignIconView glyphName="FORWARD" size="30"/>
                             </graphic>
-                        </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                                    onAction="#updateEmployeePassword" styleClass="update" text=" "
                                    GridPane.columnIndex="4" GridPane.rowIndex="2">
                             <graphic>
                                 <MaterialDesignIconView glyphName="FORWARD" size="30"/>
                             </graphic>
-                        </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                                    onAction="#updateEmployeeName" styleClass="update" text=" "
                                    GridPane.columnIndex="4" GridPane.rowIndex="3">
                             <graphic>
                                 <MaterialDesignIconView glyphName="FORWARD" size="30"/>
                             </graphic>
-                        </Button>
-                        <TextField fx:id="employeeAddUsername" promptText="Username"
+                        </JFXButton>
+                        <JFXTextField fx:id="employeeAddUsername" labelFloat="true" promptText="Username"
                                       GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-                        <TextField fx:id="employeeAddName" promptText="Name"
+                        <JFXTextField fx:id="employeeAddName" labelFloat="true" promptText="Name"
                                       GridPane.columnIndex="3" GridPane.rowIndex="5"/>
-                        <TextField fx:id="employeeAddPassword" promptText="Password"
+                        <JFXTextField fx:id="employeeAddPassword" labelFloat="true" promptText="Password"
                                       GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                                    onAction="#addEmployee" styleClass="add" text=" " GridPane.columnIndex="4"
                                    GridPane.rowIndex="5">
                             <graphic>
                                 <MaterialIconView glyphName="ADD" size="30"/>
                             </graphic>
-                        </Button>
+                        </JFXButton>
                     </GridPane>
                 </Tab>
                 <Tab text="Managers">
@@ -142,49 +142,49 @@
                                 <Font size="16.0"/>
                             </font>
                         </Label>
-                        <TextField fx:id="managerUpdateUsername" promptText="Username"
+                        <JFXTextField fx:id="managerUpdateUsername" labelFloat="true" promptText="Username"
                                       GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-                        <TextField fx:id="managerUpdatePassword" promptText="Password"
+                        <JFXTextField fx:id="managerUpdatePassword" labelFloat="true" promptText="Password"
                                       GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-                        <TextField fx:id="managerUpdateName" promptText="Name"
+                        <JFXTextField fx:id="managerUpdateName" labelFloat="true" promptText="Name"
                                       GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                                    onAction="#updateManagerUsername" styleClass="update" text=" "
                                    GridPane.columnIndex="4" GridPane.rowIndex="1">
                             <graphic>
                                 <MaterialDesignIconView glyphName="FORWARD" size="30"/>
                             </graphic>
-                        </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                                    onAction="#updateManagerPassword" styleClass="update" text=" "
                                    GridPane.columnIndex="4" GridPane.rowIndex="2">
                             <graphic>
                                 <MaterialDesignIconView glyphName="FORWARD" size="30"/>
                             </graphic>
-                        </Button>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
+                        </JFXButton>
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                                    onAction="#updateManagerName" styleClass="update" text=" "
                                    GridPane.columnIndex="4" GridPane.rowIndex="3">
                             <graphic>
                                 <MaterialDesignIconView glyphName="FORWARD" size="30"/>
                             </graphic>
-                        </Button>
-                        <TextField fx:id="managerAddUsername" promptText="Username"
+                        </JFXButton>
+                        <JFXTextField fx:id="managerAddUsername" labelFloat="true" promptText="Username"
                                       GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-                        <TextField fx:id="managerAddName" promptText="Name"
+                        <JFXTextField fx:id="managerAddName" labelFloat="true" promptText="Name"
                                       GridPane.columnIndex="3" GridPane.rowIndex="5"/>
-                        <TextField fx:id="managerAddPassword" promptText="Password"
+                        <JFXTextField fx:id="managerAddPassword" labelFloat="true" promptText="Password"
                                       GridPane.columnIndex="2" GridPane.rowIndex="5"/>
-                        <Button alignment="CENTER" contentDisplay="CENTER"
+                        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                                    onAction="#addManager" styleClass="add" text=" " GridPane.columnIndex="4"
                                    GridPane.rowIndex="5">
                             <graphic>
                                 <MaterialIconView glyphName="ADD" size="30"/>
                             </graphic>
-                        </Button>
+                        </JFXButton>
                     </GridPane>
                 </Tab>
-            </TabPane>
+            </JFXTabPane>
         </center>
     </BorderPane>
 </StackPane>
