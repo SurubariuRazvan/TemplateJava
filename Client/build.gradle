@@ -8,7 +8,6 @@ dependencies {
     implementation project(':Service')
 
     compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.6'
-    compile group: 'com.jfoenix', name: 'jfoenix', version: '9.0.8'
     compile group: 'de.jensd', name: 'fontawesomefx-commons', version: '9.1.2'
     compile 'de.jensd:fontawesomefx-fontawesome:4.7.0-9.1.2'
     compile 'de.jensd:fontawesomefx-materialdesignfont:2.0.26-9.1.2'
