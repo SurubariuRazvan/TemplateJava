@@ -34,28 +34,16 @@
     -fx-background-radius: 14px;
 }
 
-.text-field, .text-area {
+.text-field, .jfx-text-area {
     -fx-font-size: 11pt;
     -fx-text-fill: derive(-fx-secondary, 20%);
     -jfx-unfocus-color: derive(-fx-primarytext, 20%);
     -fx-prompt-text-fill: derive(-fx-primarytext, 20%);
     -jfx-focus-color: -fx-secondary;
-    -fx-text-box-border: transparent;
-    -fx-background-color: none;
-    -fx-background-insets: 0;
-    -fx-padding: 1 3 3 3;
-    -fx-border-width: 0 0 2 0;
-    -fx-border-color: -fx-secondary;
+    /*-fx-font-weight: 800;*/
 }
 
-.text-field:focused, .text-area:focused {
-    -fx-text-box-border: transparent;
-    -fx-faint-focus-color: transparent;
-    -fx-border-width: 0 0 4 0;
-    -fx-border-color: derive(-fx-secondary, 10%);
-}
-
-.text-area {
+.jfx-text-area{
     -fx-prompt-text-fill: derive(-fx-primarytext, -40%);
 }
 
@@ -65,6 +53,7 @@
 }
 
 .text-field.add {
+    -jfx-focus-color: -fx-add;
     -fx-text-fill: derive(-fx-add, 20%);
 }
 
@@ -98,8 +87,15 @@
     -fx-prompt-text-fill: #ef5350;
 }
 
-/*app-window*/
+/*com.jderu.app-window*/
 
+.jfx-date-picker > .jfx-text-field {
+    -jfx-label-float: true;
+}
+
+.jfx-time-picker > .jfx-text-field {
+    -jfx-label-float: true;
+}
 
 #saveTask {
     -fx-border-radius: 20px;
@@ -197,9 +193,13 @@
     -fx-font-size: 13pt;
 }
 
-.table-text-cell {
+.table-text-cell{
     -fx-text-fill: -fx-primary-text;
 }
+
+/*.table-column {*/
+/*    -fx-alignment: CENTER;*/
+/*}*/
 
 .table-row-cell:even {
     -fx-background-color: derive(-fx-primary, 10%);
@@ -282,34 +282,34 @@
     -fx-opacity: 1;
 }
 
-/*Dialog styling*/
-.showError {
+/*JFXDialog styling*/
+.jfx-layout-heading {
+    -fx-background-color: derive(-fx-tertiary, -20%);
+    -fx-alignment: Center;
+    -fx-padding: 10 20 10 20;
+}
+
+.errorHeading .jfx-layout-heading {
+    -fx-background-color: derive(-fx-red, -40%);
+}
+
+.jfx-layout-heading .label {
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size: 18pt;
+}
+
+.jfx-layout-body, .jfx-layout-actions {
     -fx-background-color: -fx-primary;
     -fx-alignment: Center;
-    -fx-padding: 0 20 10 20;
-    -fx-max-width: 400px;
-    -fx-max-height: 150px;
-    -fx-border-color: derive(-fx-red, 30%);
-    -fx-border-width: 2px;
-    -fx-fit-to-width: true;
 }
 
-.showError .errorHeading {
-    -fx-background-color: derive(-fx-red, 30%);
-    -fx-font-size: 18pt;
-    -fx-alignment: Center;
-    -fx-min-width: 350px;
-}
-
-.showError .errorBody {
-    -fx-text-fill: -fx-primarytext;
-    -fx-font-size: 18pt;
-    -fx-alignment: Center;
-    -fx-min-width: 350px;
-}
-
-.showError .button {
-    -fx-text-fill: -fx-primarytext;
+.jfx-layout-actions .button {
     -fx-padding: 0 10 0 10;
-    -fx-font-size: 18pt;
+    -fx-font-size: 14pt;
+}
+
+.jfx-layout-body .label {
+    -fx-text-fill: -fx-primarytext;
+    -fx-padding: 20px 0 0 0;
+    -fx-font-size: 14pt;
 }

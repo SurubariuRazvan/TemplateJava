@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,8 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<?import javafx.scene.control.TextArea?>
-<StackPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.exam.client.controller.ManagerController">
+<StackPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jderu.client.controller.ManagerController">
     <BorderPane fx:id="menuPane" prefHeight="200.0" prefWidth="200.0">
         <center>
             <TableView fx:id="employeeTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -38,7 +38,7 @@
                     <Insets bottom="8.0" left="8.0" right="8.0" />
                 </BorderPane.margin>
                 <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Task" />
-                <TextArea fx:id="taskDescription" prefHeight="50.0" promptText="Task Description" GridPane.rowIndex="1" />
+                <JFXTextArea fx:id="taskDescription" prefHeight="50.0" promptText="Task Description" GridPane.rowIndex="1" />
             </GridPane>
         </bottom>
     </BorderPane>
